@@ -1,0 +1,1 @@
+# web-auction-paintings-participation
