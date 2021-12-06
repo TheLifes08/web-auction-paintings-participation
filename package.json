@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "prestart": "npm run build",
-    "build": "flow-remove-types src/ -d lib/ && rm -rf dist && webpack --mode development",
+    "build": "flow-remove-types flow/ -d src/ && rm -rf dist && webpack --mode development",
     "start": "node dist/server.js",
     "flow": "flow",
     "test": "mocha"

@@ -115,7 +115,7 @@ eval("const express = __webpack_require__(/*! express */ \"express\");\n\nconst 
   \**********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const storage = __webpack_require__(/*! ./storage */ \"./src/storage/index.js\");\n\nconst logger = __webpack_require__(/*! ./logging */ \"./src/logging/index.js\");\n\nconst expressServer = __webpack_require__(/*! ./express-server */ \"./src/express-server/index.js\");\n\nconst socketServer = __webpack_require__(/*! ./socket-server */ \"./src/socket-server/index.js\");\n\nsocketServer.listen(storage.settings.listenSocketPort);\nexpressServer.listen(storage.settings.listenHttpPort, storage.settings.listenIP, () => {\n  logger.info(`Server started at http://${storage.settings.listenIP}:${storage.settings.listenHttpPort}`);\n});\n\n//# sourceURL=webpack://@rkolovanov/web-auction-paintings-participation/./src/index.js?");
+eval("/*       */\nconst storage = __webpack_require__(/*! ./storage */ \"./src/storage/index.js\");\n\nconst logger = __webpack_require__(/*! ./logging */ \"./src/logging/index.js\");\n\nconst expressServer = __webpack_require__(/*! ./express-server */ \"./src/express-server/index.js\");\n\nconst socketServer = __webpack_require__(/*! ./socket-server */ \"./src/socket-server/index.js\");\n\nsocketServer.listen(storage.settings.listenSocketPort);\nexpressServer.listen(storage.settings.listenHttpPort, storage.settings.listenIP, () => {\n  let message = `Server started at http://${storage.settings.listenIP}:${storage.settings.listenHttpPort}`;\n  logger.info(message);\n});\n\n//# sourceURL=webpack://@rkolovanov/web-auction-paintings-participation/./src/index.js?");
 
 /***/ }),
 
