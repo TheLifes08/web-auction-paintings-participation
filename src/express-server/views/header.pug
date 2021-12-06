@@ -1,0 +1,12 @@
+header(class="w3-container w3-card-4 w3-indigo w3-border-black-border")
+    h3 &#128444; Аукцион картин
+    section(class="w3-bar")
+        a(class="w3-bar-item w3-button w3-indigo", href="/") Главная
+        if (authenticated)
+            a(class="w3-bar-item w3-button w3-indigo", href="/paintings") Приобретенные картины
+            if (user && user.admin)
+                a(class="w3-bar-item w3-button w3-indigo", href="/administration") Администрирование
+            a(class="w3-bar-item w3-button w3-indigo w3-right", href="/logout") Выйти из аккаунта
+        else
+            a(class="w3-bar-item w3-button w3-indigo w3-right", href="/login") Авторизация
+            a(class="w3-bar-item w3-button w3-indigo w3-right", href="/registration") Регистрация

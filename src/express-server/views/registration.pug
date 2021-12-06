@@ -1,0 +1,26 @@
+extends page-template
+
+block head
+    title Аукцион картин - Регистрация
+    script(type="text/javascript", src="/public/scripts/registration.js")
+
+block body
+    include header
+
+    div(class="w3-card-4 w3-display-middle form-container")
+        div(class="w3-container w3-indigo w3-center")
+            h2 Регистрация
+
+        div(class="w3-container")
+            div(class="w3-section")
+                label Имя пользователя
+                input(id="username-input", class="w3-input", type="text")
+            div(class="w3-section")
+                label Пароль
+                input(id="password-input", class="w3-input", type="password")
+            div(class="w3-section")
+                button(id="submit-button", class="w3-button w3-block w3-indigo", type="password") Зарегистрироваться
+            div(class="w3-section")
+                div(id="form-message", class="w3-section w3-panel w3-display-container display-none")
+                    span(id="form-message-close", class="w3-button w3-display-topright") &times;
+                    p(id="form-message-p") -

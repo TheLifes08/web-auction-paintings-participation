@@ -1,0 +1,85 @@
+extends page-template
+
+block head
+    title Аукцион картин
+    script(type="text/javascript", src="/public/scripts/tables.js")
+    script(type="text/javascript", src="/public/scripts/auction.js")
+
+block body
+    include header
+
+    div(id="modal-make-bet", class="w3-modal display-none")
+        div(class="w3-modal-content w3-card-4 w3-animate-zoom")
+            header(class="w3-container w3-indigo")
+                span(onclick="closeBetForm();", class="w3-button w3-display-topright") &times;
+                h4 Предложить новую цену
+            div(class="w3-container w3-white")
+                div(class="w3-section")
+                    label(class="w3-text-gray") Новая цена
+                    input(id="make-bet-form-price", class="w3-input w3-border", type="number", onchange="checkBetForm()")
+                button(id="make-bet-form-submit", class="w3-indigo w3-button w3-block w3-border w3-margin-bottom") Предложить
+                div(id="make-bet-form-message", class="w3-panel w3-display-container display-none")
+                    span(id="make-bet-form-message-close", class="w3-button w3-display-topright") &times;
+                    p(id="make-bet-form-message-p")
+
+    section(class="w3-container")
+        div(class="w3-col", style="width: calc(60% - 20px)")
+            div(class="w3-panel w3-margin-bottom w3-white w3-border")
+                h4(id="auction-status-title", class="w3-center") &nbsp
+
+            div(id="painting-bet-info", class="w3-panel w3-margin-bottom w3-white w3-border display-none")
+                h5 Последняя цена:&nbsp
+                    span(id="painting-current-price") -
+                h5 Покупатель:&nbsp
+                    span(id="painting-current-buyer") -
+
+            div(id="painting-container", class="w3-container w3-margin-bottom w3-white w3-border display-none")
+                h4 Текущий лот
+                div(class="w3-white w3-border w3-col w3-margin-bottom", style="max-width: calc(100% - 420px); min-width: calc(60% - 20px); margin-right: 20px;")
+                    div(class="w3-container w3-border-bottom")
+                        div(class="w3-section")
+                            span(class="w3-text-dark-gray") Название картины:&nbsp
+                            span(id="painting-title")
+                        div(class="w3-section")
+                            span(class="w3-text-dark-gray") Автор картины:&nbsp
+                            span(id="painting-author")
+                        div(class="w3-section")
+                            span(class="w3-text-dark-gray") Стартовая цена:&nbsp
+                            span(id="painting-start-price")
+                        div(class="w3-section")
+                            span(class="w3-text-dark-gray") Минимальный шаг цены:&nbsp
+                            span(id="painting-min-step")
+                        div(class="w3-section")
+                            span(class="w3-text-dark-gray") Максимальный шаг цены:&nbsp
+                            span(id="painting-max-step")
+                    div(class="w3-container")
+                        p(class="w3-text-dark-gray") Описание:
+                        p(id="painting-desc")
+
+                div(class="w3-white w3-border w3-col w3-margin-bottom", style="max-width: 400px; width: 40%; padding: 0px;")
+                    img(id="painting-image", alt="Painting Image", class="w3-right", style="width: 100%;")
+
+        div(class="w3-col", style="width: 40%; margin-left: 20px;")
+            div(class="w3-panel w3-white w3-border w3-col")
+                h4 Информация об аукционе
+                p Дата начала:&nbsp
+                    span(id="auction-settings-datetime") #{auctionSettings.datetime.replace("T", " ")}
+                p Время на изучение информации:&nbsp
+                    span(id="auction-settings-pause-timeout") #{auctionSettings.pauseTimeout}
+                    span &nbspсек.
+                p Таймаут продажи:&nbsp
+                    span(id="auction-settings-auction-timeout") #{auctionSettings.auctionTimeout}
+                    span &nbspсек.
+                p Таймаут ставки:&nbsp
+                    span(id="auction-settings-bet-timeout") #{auctionSettings.betTimeout}
+                    span &nbspсек.
+
+            div(class="w3-panel w3-white w3-border w3-col")
+                h4 Действия
+                p Баланс:&nbsp
+                    span(id="user-balance") #{user.balance}
+                div(class="w3-margin-bottom w3-left full-width")
+                    button(id="show-bet-dialog-button", class="w3-indigo w3-button w3-block w3-border", disabled) Предложить новую цену
+            div(class="w3-panel w3-white w3-border w3-col")
+                h4 Статус
+                textarea(id="status-textarea", class="console-textarea", disabled, style="resize: none; width: 100%; margin-bottom: 10px;")

@@ -1,0 +1,14 @@
+{
+  "listenIP": "localhost",
+  "listenHttpPort": 8070,
+  "listenSocketPort": 8090,
+  "session_secret": "6e450eb6-a5b9-4305-bf05-377b825a5f73",
+  "bodyParserJsonParameters": {
+    "limit": "10mb"
+  },
+  "bodyParserUrlencodedParameters": {
+    "limit": "10mb",
+    "extended": true,
+    "parameterLimit": 50000
+  }
+}

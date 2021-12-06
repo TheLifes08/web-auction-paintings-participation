@@ -1,0 +1,44 @@
+extends page-template
+
+block head
+    title Аукцион картин - Приобретенные картины
+
+block body
+    include header
+
+    section(class="w3-container")
+        div(class="w3-panel w3-white w3-border")
+            h4 Список приобретенных картин
+
+        if paintings.length > 0
+            each painting in paintings
+                div(class="w3-panel w3-white w3-border w3-padding-16")
+                    div(class="w3-white w3-border w3-col", style="max-width: calc(100% - 420px); min-width: calc(60% - 20px); margin-right: 20px;")
+                        div(class="w3-container w3-border-bottom")
+                            div(class="w3-section")
+                                span(class="w3-text-dark-gray") Название картины:&nbsp
+                                span(id="painting-title") #{painting.title}
+                            div(class="w3-section")
+                                span(class="w3-text-dark-gray") Автор картины:&nbsp
+                                span(id="painting-author") #{painting.author}
+                            div(class="w3-section")
+                                span(class="w3-text-dark-gray") Стартовая цена:&nbsp
+                                span(id="painting-start-price") #{painting.startPrice}
+                            div(class="w3-section")
+                                span(class="w3-text-dark-gray") Итоговая цена:&nbsp
+                                span(id="painting-price") #{painting.price}
+                            div(class="w3-section")
+                                span(class="w3-text-dark-gray") Минимальный шаг цены:&nbsp
+                                span(id="painting-min-step") #{painting.minimalPriceStep}
+                            div(class="w3-section")
+                                span(class="w3-text-dark-gray") Максимальный шаг цены:&nbsp
+                                span(id="painting-max-step") #{painting.maximumPriceStep}
+                        div(class="w3-container")
+                            p(class="w3-text-dark-gray") Описание:
+                            p(id="painting-desc") #{painting.description}
+
+                    div(class="w3-white w3-border w3-col", style="max-width: 400px; width: 40%; padding: 0px;")
+                        img(id="painting-image", src="/public/images/paintings/" + painting.imageName, alt="Painting Image", class="w3-right", style="width: 100%;")
+        else
+            div(class="w3-panel w3-white w3-border w3-center")
+                h4 У вас нет приобретенных картин

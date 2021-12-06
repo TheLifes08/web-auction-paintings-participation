@@ -1,0 +1,51 @@
+extends page-template
+
+block head
+    title Аукцион картин - Администрирование
+    script(type="text/javascript", src="/public/scripts/tables.js")
+    script(type="text/javascript", src="/public/scripts/administration.js")
+
+block body
+    include header
+
+    section(class="w3-container")
+        div(class="w3-col", style="width: calc(70% - 20px)")
+            div(class="w3-panel w3-margin-bottom w3-white w3-border")
+                h4 Список картин, выставленных на аукцион
+                table(class="w3-table-all w3-margin-bottom")
+                    thead
+                        tr(class="w3-indigo")
+                            th Название
+                            th Автор
+                            th(class="w3-center") Стартовая цена
+                            th(class="w3-center") Итоговая цена
+                            th(class="w3-center") Покупатель
+                    tbody(id="paintings-table-body")
+
+        div(class="w3-col", style="width: 30%; margin-left: 20px;")
+            div(class="w3-panel w3-white w3-border w3-col")
+                h4 Информация об аукционе
+                p Дата начала:&nbsp
+                    span(id="auction-settings-datetime") #{auctionSettings.datetime.replace("T", " ")}
+                p Время на изучение информации:&nbsp
+                    span(id="auction-settings-pause-timeout") #{auctionSettings.pauseTimeout}
+                    span &nbspсек.
+                p Таймаут продажи:&nbsp
+                    span(id="auction-settings-auction-timeout") #{auctionSettings.auctionTimeout}
+                    span &nbspсек.
+                p Таймаут ставки:&nbsp
+                    span(id="auction-settings-bet-timeout") #{auctionSettings.betTimeout}
+                    span &nbspсек.
+
+            div(class="w3-panel w3-white w3-border w3-col")
+                h4 Участники аукциона
+                table(class="w3-table-all w3-margin-bottom")
+                    thead
+                        tr(class="w3-indigo")
+                            th Имя пользователя
+                            th(class="w3-center") Баланс
+                    tbody(id="users-table-body")
+
+            div(class="w3-panel w3-white w3-border w3-col")
+                h4 Статус
+                textarea(id="status-textarea", class="console-textarea", disabled, style="resize: none; width: 100%; margin-bottom: 10px;")

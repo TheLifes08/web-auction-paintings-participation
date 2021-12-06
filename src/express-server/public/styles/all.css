@@ -1,0 +1,15 @@
+.form-container {
+    min-width: 50%;
+}
+
+.display-none {
+    display: none;
+}
+
+.console-textarea {
+    height: 300px;
+}
+
+.full-width {
+    width: 100%;
+}

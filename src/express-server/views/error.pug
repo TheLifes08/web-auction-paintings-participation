@@ -1,0 +1,9 @@
+extends page-template
+
+block head
+    title Аукцион картин - Ошибка
+
+block body
+    include header
+
+    h2(class="w3-bold w3-display-middle") #{errorStatus}. #{errorMessage}.
