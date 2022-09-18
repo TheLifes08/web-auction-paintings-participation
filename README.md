@@ -1,3 +1,3 @@
 # web-auction-paintings-participation
 
-Веб приложения для участия в аукционе картин (web-auction-paintings).
+Веб-приложение для участия в аукционе картин (web-auction-paintings). Лабораторная работа по дисциплине "WEB-технологии".
